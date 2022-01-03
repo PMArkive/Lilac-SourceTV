@@ -33,7 +33,7 @@ public Plugin:myinfo = {
 	name = "[Lilac] Auto SourceTV Recorder",
 	author = "J_Tanzanite",
 	description = "Automatically records SourceTV demos upon cheater detection.",
-	version = "1.2.0",
+	version = "1.2.1",
 	url = ""
 };
 
@@ -140,6 +140,9 @@ public void cvar_lock(ConVar convar, const char[] oldValue, const char[] newValu
 	}
 	else {
 		if (StringToInt(newValue, 10) == 0)
+			return;
+
+		if (icvar[CVAR_RECORD] == 0)
 			return;
 
 		ServerCommand("tv_autorecord 0");
